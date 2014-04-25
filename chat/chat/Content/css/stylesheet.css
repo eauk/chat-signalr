@@ -148,16 +148,20 @@ body {
 /* ------ Connected ------*/
 
 .connected {
-	text-align:center;
+    text-align:center;
 	display: block;
 	margin:0px auto;
 	width: 700px;
 	height: 400px;
 	background-color: #ffffff;
-	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow:0px 3px 3px #e3e4e6;
+    -ms-box-shadow:0px 3px 3px #e3e4e6;
+    box-shadow:0px 3px 3px #e3e4e6;
 	color: #637277;
 }
+
 .connected h2 {
 	padding-top: 20px;
 }
@@ -167,20 +171,24 @@ body {
 	margin: 65px 165px 0 0;
 }
 #creatorImage {
-	float: left;
+    float: left;
 	margin: 90px 0 0 140px;
 	width: 100px;
 	height: 100px;
-	border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
 }
 
 #yourName {
-	float:left;
+    float:left;
 	padding-left:10px;
 	width: 150px;
 	height: 30px;
-	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow:0px 3px 3px #e3e4e6;
+    -ms-box-shadow:0px 3px 3px #e3e4e6;
+    box-shadow:0px 3px 3px #e3e4e6;
 	background-color: #f0f1f3;
 	border: 1px solid #d1d1d1;
 	border-radius: 3px;
@@ -190,12 +198,15 @@ body {
 }
 
 #yourEmail {
-	float:left;
+    float:left;
 	padding-left: 10px;
 	width: 200px;
 	height: 30px;
-	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow:0px 3px 3px #e3e4e6;
+    -ms-box-shadow:0px 3px 3px #e3e4e6;
+    box-shadow:0px 3px 3px #e3e4e6;
 	background-color: #f0f1f3;
 	border: 1px solid #d1d1d1;
 	border-radius: 3px;
@@ -204,14 +215,17 @@ body {
 }
 
 #yourEnter {
-	float:left;
+    float:left;
 	width: 110px;
 	height: 40px;
 	text-align:center;
 	background-color: #73b4d4;
 	border: none;
-	box-shadow: 3px 3px 3px #efedee;
-	border-radius: 2px;
+    -webkit-box-shadow: 3px 3px 3px #efedee;
+    -ms-box-shadow: 3px 3px 3px #efedee;
+    box-shadow: 3px 3px 3px #efedee;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
 	color:white;
 	font-weight: bold;
 	font-size: 15px;
@@ -222,16 +236,20 @@ body {
 /* ------ Person Inside ------*/
 
 .personinside {
-	text-align:center;
+    text-align:center;
 	display: block;
 	margin:0px auto;
 	width: 700px;
 	height: 400px;
 	background-color: #ffffff;
-	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow:0px 3px 3px #e3e4e6;
+    -ms-box-shadow:0px 3px 3px #e3e4e6;
+    box-shadow:0px 3px 3px #e3e4e6;
 	color: #637277;
 }
+
 .personinside h2 {
 	padding-top: 20px;
 	width: 210px;
@@ -245,20 +263,24 @@ body {
 }
 
 #ownerImage {
-	float: left;
+    float: left;
 	margin: 90px 0 0 140px;
 	width: 100px;
 	height: 100px;
-	border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
 }
 
 #hisName {
-	float:left;
+    float:left;
 	padding-left:10px;
 	width: 150px;
 	height: 30px;
-	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow:0px 3px 3px #e3e4e6;
+    -ms-box-shadow:0px 3px 3px #e3e4e6;
+    box-shadow:0px 3px 3px #e3e4e6;
 	background-color: #f0f1f3;
 	border: 1px solid #d1d1d1;
 	border-radius: 3px;
@@ -267,28 +289,34 @@ body {
 }
 
 #hisEmail {
-	float:left;
+    float:left;
 	padding-left: 10px;
 	width: 200px;
 	height: 30px;
-	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
-	background-color: #f0f1f3;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #f0f1f3;
 	border: 1px solid #d1d1d1;
 	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+    -webkit-box-shadow:0px 3px 3px #e3e4e6;
+    -ms-box-shadow:0px 3px 3px #e3e4e6;
+    box-shadow:0px 3px 3px #e3e4e6;
+    box-shadow:0px 3px 3px #e3e4e6;
 	margin-bottom:40px;
 }
 
 #hisEnter {
-	float:left;
+    float:left;
 	width: 110px;
 	height: 40px;
 	text-align:center;
 	background-color: #73b4d4;
 	border: none;
-	box-shadow: 3px 3px 3px #efedee;
-	border-radius: 2px;
+    -webkit-box-shadow: 3px 3px 3px #efedee;
+    -ms-box-shadow: 3px 3px 3px #efedee;
+    box-shadow: 3px 3px 3px #efedee;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
 	color:white;
 	font-weight: bold;
 	font-size: 15px;
@@ -299,16 +327,20 @@ body {
 
 
 .invite-textfield {
-	text-align:center;
+    text-align:center;
 	display: block;
 	margin:0px auto;
 	width: 750px;
 	height: 300px;
 	background-color: #ffffff;
-	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow:0px 3px 3px #e3e4e6;
+    -ms-box-shadow:0px 3px 3px #e3e4e6;
+    box-shadow:0px 3px 3px #e3e4e6;
 	color: #637277;
 }
+
 .invite-textfield h2 {
 	padding-top: 80px;
 }
@@ -317,16 +349,18 @@ body {
 	 margin: 10px 0 35px;
  }
 .invite-textfield .link {
-	width: 600px;
+    width: 600px;
 	height: 35px;
 	text-align:center;
 	display: block;
 	margin:0px auto;
 	padding-top: 15px;
 	margin-bottom:120px;
-	border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
 	background-color: #f0f1f3;
 }
+
 .invite-textfield #link{
 	text-decoration: none;
 	color: #637277;
@@ -336,17 +370,21 @@ body {
 /* ------ Left ------*/
 
 .left {
-	text-align:center;
+    text-align:center;
 	display: block;
 	margin:0px auto;
 	width: 750px;
 	height: 300px;
 	background-color: #ffffff;
-	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow:0px 3px 3px #e3e4e6;
+    -ms-box-shadow:0px 3px 3px #e3e4e6;
+    box-shadow:0px 3px 3px #e3e4e6;
 	color: #637277;
 	margin-bottom: 400px;
 }
+
 .left h2 {
 	padding-top: 50px;
 	padding-bottom: 6px;
@@ -357,12 +395,14 @@ body {
 }
 
 #leftImage {
-	float: left;
+    float: left;
 	margin: 90px 0 0 140px;
 	width: 100px;
 	height: 100px;
-	border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
 }
+
 .nickname-left {
 	width: 40px;
 	overflow: hidden;
@@ -372,16 +412,20 @@ body {
 
 
 .toomanypeople {
-	text-align:center;
+    text-align:center;
 	display: block;
 	margin:0px auto;
 	width: 750px;
 	height: 300px;
 	background-color: #ffffff;
-	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow:0px 3px 3px #e3e4e6;
+    -ms-box-shadow:0px 3px 3px #e3e4e6;
+    box-shadow:0px 3px 3px #e3e4e6;
 	color: #637277;
 }
+
 .toomanypeople h2 {
 	padding-top: 100px;
 	padding-bottom: 8px;
@@ -401,17 +445,21 @@ body {
 
 
 .nomessages {
-	text-align:center;
+    text-align:center;
 	display: block;
 	margin:0px auto;
 	width: 750px;
 	height: 300px;
 	background-color: #ffffff;
-	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow:0px 3px 3px #e3e4e6;
+    -ms-box-shadow:0px 3px 3px #e3e4e6;
+    box-shadow:0px 3px 3px #e3e4e6;
 	color: #637277;
 	margin-bottom: 400px;
 }
+
 .nomessages h2 {
 	padding-top: 50px;
 	overflow: hidden;
@@ -423,20 +471,23 @@ body {
 }
 
 #noMessagesImage {
-	float: left;
+    float: left;
 	margin: 90px 0 0 140px;
 	width: 100px;
 	height: 100px;
-	border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
 }
 
 #img {
-	float: left;
+    float: left;
 	margin: 90px 0 0 140px;
 	width: 100px;
 	height: 100px;
-	border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
 }
+
 .info {
 	text-align: left;
 	float: right;
@@ -463,10 +514,11 @@ body {
 }
 
 .image img {
-	float: left;
+    float: left;
 	width: 80px;
 	height: 80px;
-	border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
 }
 
 .body {
@@ -500,36 +552,50 @@ body {
 }
 
 .chats .me p {
-	text-align:left;
+    text-align:left;
 	float: left;
 	display: inline-block;
 	margin-left: 20px;
 	margin-bottom:30px;
 	padding: 25px 34px;
-	min-width: 160px;
+    -moz-min-width: 160px;
+    -ms-min-width: 160px;
+    -o-min-width: 160px;
+    -webkit-min-width: 160px;
+    min-width: 160px;
 	min-height: 10px;
 	max-width: 510px;
 	background-color: #FFF;
-	border-radius: 3px;
-	box-shadow: 0px 3px 3px #E3E4E6;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 3px 3px #E3E4E6;
+    -ms-box-shadow: 0px 3px 3px #E3E4E6;
+    box-shadow: 0px 3px 3px #E3E4E6;
 	color: #637277;
 	line-height: 1.4;
 	word-wrap: break-word;
 }
 
 .chats .you p {
-	text-align:left;
+    text-align:left;
 	float: left;
 	display: inline-block;
 	margin-right:20px;
 	margin-bottom:30px;
 	padding: 25px 34px;
-	min-width: 160px;
+    -moz-min-width: 160px;
+    -ms-min-width: 160px;
+    -o-min-width: 160px;
+    -webkit-min-width: 160px;
+    min-width: 160px;
 	min-height: 10px;
 	max-width: 510px;
 	background-color: #FFF;
-	border-radius: 3px;
-	box-shadow: 0px 3px 3px #E3E4E6;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 3px 3px #E3E4E6;
+    -ms-box-shadow: 0px 3px 3px #E3E4E6;
+    box-shadow: 0px 3px 3px #E3E4E6;
 	color: #637277;
 	line-height: 1.4;
 	word-wrap: break-word;
@@ -542,11 +608,12 @@ body {
 	padding-top: 7px;
 }
 
-.image i{
-	font-size: 12px;
+.image i {
+    font-size: 12px;
 	line-height: 1.2;
 	display: block;
-	opacity: 0.8;
+    -ms-opacity: 0.8;
+    opacity: 0.8;
 	padding-top: 4px;
 }
 
@@ -569,23 +636,27 @@ footer {
 }
 
 #message {
-	width: 550px;
+    width: 550px;
 	height: 80px;
 	display: block;
 	float:left;
 	margin: 0 auto;
 	background-color: #f9f9f9;
 	border: 1px solid #cccccc;
-	border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
 	padding-left: 20px;
 	padding-top: 20px;
-	resize: none;
+    -moz-resize: none;
+    -ms-resize: none;
+    -o-resize: none;
+    resize: none;
 	font:inherit;
 	color:inherit;
 }
 
 #submit {
-	width: 110px;
+    width: 110px;
 	height: 60px;
 	float:right;
 	text-align:center;
@@ -593,8 +664,11 @@ footer {
 	display: block;
 	margin: 0 auto;
 	border: none;
-	box-shadow: 3px 3px 3px #efedee;
-	border-radius: 2px;
+    -webkit-box-shadow: 3px 3px 3px #efedee;
+    -ms-box-shadow: 3px 3px 3px #efedee;
+    box-shadow: 3px 3px 3px #efedee;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
 	color:white;
 	font-weight: bold;
 	font-size: 17px;

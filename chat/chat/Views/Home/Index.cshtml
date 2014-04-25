@@ -19,12 +19,25 @@
                 <img src="@Url.Content("~/Content/img/signalrlogo.png")" alt="signalrlogo" id="signalrlogo" />
                 <h2 id="chat">powered web chat</h2>
             </div>
-            <a title="Create" href="/create" id="create">
+            <a title="Create" id="create">
                 <div id="createbutton">
                     <div id="little">Create a Private</div>
                     <div id="big">CHAT ROOM!</div>
                 </div>
             </a>
+            
+            <div class="connected">
+                <img src="@Url.Content("~/Content/img/unnamed.jpg")" id="creatorImage" />
+                <div class="infoConnected">
+                    <h2>Who are you?</h2>
+                    <br />
+                    <form class="loginForm">
+                        <input type="text" id="yourName" placeholder="Your nick name" /><br />
+                        <input type="text" id="yourEmail" placeholder="Your email address" /><br />
+                        <input type="submit" id="yourEnter" value="ENTER" />
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 </body>
