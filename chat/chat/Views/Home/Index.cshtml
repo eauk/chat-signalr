@@ -11,34 +11,122 @@
     <title>Create a new chat room!</title>
     <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/css/stylesheet.css")" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.0.3.min.js"></script>
+    <script src="/signalr/hubs"></script>
 </head>
 <body>
     <section>
         <div class="homesection">
-            <div class="signalr">
+            <div class="node">
                 <img src="@Url.Content("~/Content/img/signalrlogo.png")" alt="signalrlogo" id="signalrlogo" />
                 <h2 id="chat">powered web chat</h2>
             </div>
-            <a title="Create" id="create">
+            <a title="Create" href="#" id="create">
                 <div id="createbutton">
-                    <div id="little">Create a Private</div>
+                    <div id="little">Create</div>
                     <div id="big">CHAT ROOM!</div>
                 </div>
             </a>
-            
-            <div class="connected">
-                <img src="@Url.Content("~/Content/img/unnamed.jpg")" id="creatorImage" />
-                <div class="infoConnected">
-                    <h2>Who are you?</h2>
-                    <br />
-                    <form class="loginForm">
-                        <input type="text" id="yourName" placeholder="Your nick name" /><br />
-                        <input type="text" id="yourEmail" placeholder="Your email address" /><br />
-                        <input type="submit" id="yourEnter" value="ENTER" />
-                    </form>
-                </div>
+        </div>
+        
+        <div class="connected">
+            <img src="@Url.Content("~/Content/img/unnamed.jpg")" id="creatorImage" />
+            <div class="infoConnected">
+                <h2>Who are you?</h2>
+                <br />
+                <form id="loginForm">
+                    <input type="text" id="yourName" placeholder="Your nick name" autofocus="autofocus" /><br />
+                    <input type="text" id="yourEmail" placeholder="Your email address" /><br />
+                    <input type="submit" id="yourEnter" value="ENTER" />
+                </form>
             </div>
         </div>
+        
+        <div class="chatscreen">
+            <ul class="chats">
+                <!-- The chat messages will go here -->
+            </ul>
+        </div>
     </section>
+    <footer>
+        <form id="chatform">
+            <textarea id="message" placeholder="Write something.." autofocus="autofocus"></textarea>
+            <input type="submit" id="submit" value="SEND" />
+        </form>
+    </footer>
+    
+    <script>
+        $(function() {
+            $('#create').on("click", function() {
+                $(this).hide();
+                $('.connected').fadeIn(1000);
+            });
+
+            function scrollToBottom() {
+                $("html, body").animate({ scrollTop: $(document).height() - $(window).height() }, 1000);
+            }
+
+            function getCurrentTime() {
+                var d = new Date();
+                var time = d.getHours() + ":" + d.getMinutes();
+                return time;
+            }
+
+            function saveUser() {
+                localStorage.setItem("name", $("#yourName").val());
+                localStorage.setItem("email", $("#yourEmail").val());
+            }
+
+            
+            // Declare a proxy to reference the hub. 
+            var chat = $.connection.chatHub;
+
+            // Create a function that the hub can call to broadcast messages.
+            chat.client.broadcastMessage = function (name, message) {
+                var msgStyle;
+                if (name == localStorage.getItem("name")) {
+                    msgStyle = 'me';
+                    name = 'Вы';
+                }
+                else
+                    msgStyle = 'you';
+
+                $('.chats').append('<li class="' + msgStyle + '">' +
+                    '<div class="image"><img src="http://www.gravatar.com/avatar/ae4be31690d2284deba465c444745a8c?s=140&amp;r=x&amp;d=mm"><b>' + name + '</b>' +
+                    '<i class="timesent">' + getCurrentTime() + '</i> </div><p>' + message + '</p></li>');
+
+                scrollToBottom();
+            };
+
+            $("#loginForm").submit(function (e) {
+                e.preventDefault();
+                saveUser();
+                $('.connected, .homesection').hide();
+                $('#chatform').parent().show(1000);
+                $('.chatscreen').show();
+
+                // Start the connection.
+                $.connection.hub.start().done(function () {
+                    var myName = localStorage.getItem("name");
+                    chat.server.setOnline(myName);
+
+                    $("#message").keypress(function (event) {
+                        // Submit the form on enter
+                        if (event.which == 13) {
+                            event.preventDefault();
+                            $("#chatform").trigger('submit');
+                        }
+                    });
+
+                    $("#chatform").submit(function (event) {
+                        event.preventDefault();
+                        chat.server.send(myName, $('#message').val());
+                        $('#message').val('').focus();
+                    });
+                });
+            });
+        })
+    </script>
 </body>
 </html>
