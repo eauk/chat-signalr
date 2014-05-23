@@ -24,6 +24,11 @@ namespace chat.Repository
             return context.Users.Where(r => r.IsOnline).ToList();
         }
 
+        public User FindUser(string name, string pass)
+        {
+            return context.Users.FirstOrDefault(r => r.Name == name && r.Password == pass);
+        }
+
         public string SetUserOffline(string connectionId)
         {
             var user = context.Users.FirstOrDefault(r => r.ConnectionId == connectionId);
@@ -34,6 +39,11 @@ namespace chat.Repository
                 return user.Name;
             }
             return string.Empty;
+        }
+
+        public void Save()
+        {
+            context.SaveChanges();
         }
     }
 }

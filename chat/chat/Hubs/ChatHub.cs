@@ -9,7 +9,7 @@ namespace chat.Hubs
 {
     public class ChatHub : Hub
     {
-        private IUserRepo userRepo;
+        private IUserRepo _userRepo;
         public void Send(string name, string message)
         {
             // Call the broadcastMessage method to update clients.
@@ -17,30 +17,41 @@ namespace chat.Hubs
                 Clients.All.broadcastMessage(name, message.Trim());
         }
 
-        public void SetOnline(string name)
+        public void SetOnline(string name, string pass)
         {
-            userRepo = new UserRepo(new DataContext());
-            userRepo.Add(new User
+            _userRepo = new UserRepo(new DataContext());
+            var user = _userRepo.FindUser(name, pass);
+            if (user == null)
             {
-                Id = Guid.NewGuid(),
-                Name = name,
-                IsOnline = true,
-                ConnectionId = Context.ConnectionId
-            });
+                _userRepo.Add(new User
+                {
+                    Id = Guid.NewGuid(),
+                    Name = name,
+                    Password = pass,
+                    IsOnline = true,
+                    Ava = "empty.png",
+                    ConnectionId = Context.ConnectionId
+                });
+            }
+            else
+            {
+                user.IsOnline = true;
+                _userRepo.Save();
+            }
 
-            var onlineNames = string.Concat(userRepo.GetOnlineUsers().Select(r => r.Name + "|").ToArray());
+            var onlineNames = string.Concat(_userRepo.GetOnlineUsers().Select(r => r.Name + "|").ToArray());
 
             Clients.All.broadcastMessage(name, name + " вошел в чат");
             Clients.All.setUserOnline(onlineNames);
         }
 
 
-        public void SetOffline(string connectionId)
+        private void SetOffline(string connectionId)
         {
-            userRepo = new UserRepo(new DataContext());
-            var name = userRepo.SetUserOffline(connectionId);
+            _userRepo = new UserRepo(new DataContext());
+            var name = _userRepo.SetUserOffline(connectionId);
 
-            var onlineNames = string.Concat(userRepo.GetOnlineUsers().Select(r => r.Name + "|").ToArray());
+            var onlineNames = string.Concat(_userRepo.GetOnlineUsers().Select(r => r.Name + "|").ToArray());
 
             Clients.All.broadcastMessage(name, name + " покинул чат");
             Clients.All.setUserOnline(onlineNames);

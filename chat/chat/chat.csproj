@@ -108,7 +108,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\uploads\e4930e51901c4ef69cbfaf38e198756c.png" />
+    <Content Include="Content\uploads\empty.png" />
     <Content Include="Content\css\stylesheet.css" />
+    <Content Include="Content\img\camera.png" />
+    <Content Include="Content\img\empty.png" />
     <Content Include="Content\img\signalrlogo.png" />
     <Content Include="Content\img\unnamed.jpg" />
     <Content Include="Content\js\chat.js" />
@@ -143,6 +147,14 @@
     <Compile Include="Migrations\201404261257519_sql001.Designer.cs">
       <DependentUpon>201404261257519_sql001.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404261455425_sql002.cs" />
+    <Compile Include="Migrations\201404261455425_sql002.Designer.cs">
+      <DependentUpon>201404261455425_sql002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404261542367_sql003.cs" />
+    <Compile Include="Migrations\201404261542367_sql003.Designer.cs">
+      <DependentUpon>201404261542367_sql003.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\User.cs" />
@@ -170,6 +182,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404261257519_sql001.resx">
       <DependentUpon>201404261257519_sql001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404261455425_sql002.resx">
+      <DependentUpon>201404261455425_sql002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404261542367_sql003.resx">
+      <DependentUpon>201404261542367_sql003.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

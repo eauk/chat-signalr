@@ -1,14 +1,12 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Create a new chat room!</title>
+    <title>SignalR Chat</title>
     <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/css/stylesheet.css")" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -17,6 +15,14 @@
 </head>
 <body>
     <section>
+        @*<div class="ava" style="display: none; position: fixed; left: 10px; top:10px;">
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <input type="file" name="file" />
+                <input type="submit" value="ok" />
+            }
+        </div>*@
+
         <div class="homesection">
             <div class="node">
                 <img src="@Url.Content("~/Content/img/signalrlogo.png")" alt="signalrlogo" id="signalrlogo" />
@@ -24,25 +30,27 @@
             </div>
             <a title="Create" href="#" id="create">
                 <div id="createbutton">
-                    <div id="little">Create</div>
+                    <div id="little">Enter in</div>
                     <div id="big">CHAT ROOM!</div>
                 </div>
             </a>
         </div>
-        
+
         <div class="connected">
             <img src="@Url.Content("~/Content/img/unnamed.jpg")" id="creatorImage" />
             <div class="infoConnected">
                 <h2>Who are you?</h2>
                 <br />
-                <form id="loginForm">
-                    <input type="text" id="yourName" placeholder="Your nick name" autofocus="autofocus" /><br />
-                    <input type="text" id="yourEmail" placeholder="Your email address" /><br />
+                <form id="enterForm">
+                    <input type="text" id="yourName" placeholder="Your name" autofocus="autofocus" required="required" /><br />
+                    <input type="email" id="yourEmail" placeholder="Your email" required="required" class="hide" /><br />
+                    <input type="password" id="yourPass" placeholder="Your password" required="required" /><br />
                     <input type="submit" id="yourEnter" value="ENTER" />
+                    <div style="float: left; padding-left: 20px;">or <a id="signUpShow" class="logon" href="#">sign up</a></div>
                 </form>
             </div>
         </div>
-        
+
         <div class="chatscreen">
             <ul class="chats">
                 <!-- The chat messages will go here -->
@@ -55,61 +63,49 @@
             <input type="submit" id="submit" value="SEND" />
         </form>
     </footer>
-    
+
     <script>
-        $(function() {
-            $('#create').on("click", function() {
+        $(function () {
+            //1 - hide 'welcome' and show login form
+            $('#create').on("click", function () {
                 $(this).hide();
                 $('.connected').fadeIn(1000);
             });
 
-            function scrollToBottom() {
-                $("html, body").animate({ scrollTop: $(document).height() - $(window).height() }, 1000);
-            }
-
-            function getCurrentTime() {
-                var d = new Date();
-                var time = d.getHours() + ":" + d.getMinutes();
-                return time;
-            }
-
-            function saveUser() {
-                localStorage.setItem("name", $("#yourName").val());
-                localStorage.setItem("email", $("#yourEmail").val());
-            }
-
-            
-            // Declare a proxy to reference the hub. 
-            var chat = $.connection.chatHub;
-
-            // Create a function that the hub can call to broadcast messages.
-            chat.client.broadcastMessage = function (name, message) {
-                var msgStyle;
-                if (name == localStorage.getItem("name")) {
-                    msgStyle = 'me';
-                    name = 'Вы';
+            //2 - show singupForm or logonForm 
+            $('#signUpShow').on("click", function() {
+                if ($(this).hasClass("logon")) {
+                    $(this).text("enter");
+                    $(this).removeClass("logon");
+                    $(this).addClass("singup");
+                    $('#yourEnter').val("SING UP");
+                    $('#yourEmail').fadeIn();
+                    $('#yourEmail').removeClass("hide");
                 }
-                else
-                    msgStyle = 'you';
-
-                $('.chats').append('<li class="' + msgStyle + '">' +
-                    '<div class="image"><img src="http://www.gravatar.com/avatar/ae4be31690d2284deba465c444745a8c?s=140&amp;r=x&amp;d=mm"><b>' + name + '</b>' +
-                    '<i class="timesent">' + getCurrentTime() + '</i> </div><p>' + message + '</p></li>');
-
-                scrollToBottom();
-            };
-
-            $("#loginForm").submit(function (e) {
+                else {
+                    $(this).text("sing up");
+                    $(this).removeClass("singup");
+                    $(this).addClass("logon");
+                    $('#yourEnter').val("ENTER");
+                    $('#yourEmail').hide();
+                    $('#yourEmail').addClass("hide");
+                }
+            });
+            
+            //3 - hide enterForm and show chat
+            $("#enterForm").submit(function (e) {
                 e.preventDefault();
                 saveUser();
                 $('.connected, .homesection').hide();
                 $('#chatform').parent().show(1000);
                 $('.chatscreen').show();
 
+
                 // Start the connection.
                 $.connection.hub.start().done(function () {
                     var myName = localStorage.getItem("name");
-                    chat.server.setOnline(myName);
+                    var myPass = localStorage.getItem("pass");
+                    chat.server.setOnline(myName, myPass);
 
                     $("#message").keypress(function (event) {
                         // Submit the form on enter
@@ -126,6 +122,46 @@
                     });
                 });
             });
+
+            // help functions
+
+            function scrollToBottom() {
+                $("html, body").animate({ scrollTop: $(document).height() - $(window).height() }, 1000);
+            }
+
+            function getCurrentTime() {
+                var d = new Date();
+                var time = d.getHours() + ":" + d.getMinutes();
+                return time;
+            }
+
+            function saveUser() {
+                localStorage.setItem("name", $("#yourName").val());
+                localStorage.setItem("pass", $("#yourPass").val());
+            }
+
+            // end help functions
+
+
+            // Declare a proxy to reference the hub.
+            var chat = $.connection.chatHub;
+
+            // Create a function that the hub can call to broadcast messages.
+            chat.client.broadcastMessage = function (name, message) {
+                var msgStyle;
+                if (name == localStorage.getItem("name")) {
+                    msgStyle = 'me';
+                    name = 'Вы';
+                }
+                else
+                    msgStyle = 'you';
+
+                $('.chats').append('<li class="' + msgStyle + '">' +
+                    '<div class="image"><img width="140" height="140" src="@Url.Content("~/Content/uploads/e4930e51901c4ef69cbfaf38e198756c.png")"><b>' + name + '</b>' +
+                    '<i class="timesent">' + getCurrentTime() + '</i> </div><p>' + message + '</p></li>');
+
+                scrollToBottom();
+            };
         })
     </script>
 </body>

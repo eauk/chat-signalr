@@ -7,6 +7,8 @@ namespace chat.Repository
     {
         void Add(User user);
         IEnumerable<User> GetOnlineUsers();
-        string SetUserOffline(string name); 
+        string SetUserOffline(string name);
+        User FindUser(string name, string pass);
+        void Save();
     }
 }
