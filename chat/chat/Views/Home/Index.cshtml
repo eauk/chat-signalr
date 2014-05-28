@@ -42,9 +42,9 @@
                 <h2>Who are you?</h2>
                 <br />
                 <form id="enterForm">
-                    <input type="text" id="yourName" placeholder="Your name" autofocus="autofocus" required="required" /><br />
-                    <input type="email" id="yourEmail" placeholder="Your email" required="required" class="hide" /><br />
-                    <input type="password" id="yourPass" placeholder="Your password" required="required" /><br />
+                    <input type="text" id="yourName" name="name" placeholder="Your name" autofocus="autofocus" required="required" /><br />
+                    <input type="email" id="yourEmail" name="email" placeholder="Your email" required="required" class="hide" /><br />
+                    <input type="password" id="yourPass" name="password" placeholder="Your password" required="required" /><br />
                     <input type="submit" id="yourEnter" value="ENTER" />
                     <div style="float: left; padding-left: 20px;">or <a id="signUpShow" class="logon" href="#">sign up</a></div>
                 </form>
@@ -95,10 +95,22 @@
             //3 - hide enterForm and show chat
             $("#enterForm").submit(function (e) {
                 e.preventDefault();
-                saveUser();
-                $('.connected, .homesection').hide();
-                $('#chatform').parent().show(1000);
-                $('.chatscreen').show();
+                var dataform = $('#enterForm').serialize();
+                var url = "/Home/Enter";
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: dataform
+                })
+                    .done(function () {
+                        saveUser();
+                        $('.connected, .homesection').hide();
+                        $('#chatform').parent().show(1000);
+                        $('.chatscreen').show();
+                    })
+                    .fail(function (xhr, str) {
+                        alert('Возникла ошибка: ' + xhr.responseCode);
+                    });
 
 
                 // Start the connection.
@@ -122,6 +134,7 @@
                     });
                 });
             });
+            //end of 3
 
             // help functions
 

@@ -9,6 +9,7 @@ namespace chat.Repository
         IEnumerable<User> GetOnlineUsers();
         string SetUserOffline(string name);
         User FindUser(string name, string pass);
+        User CheckUser(string name, string email);
         void Save();
     }
 }

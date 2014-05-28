@@ -29,6 +29,11 @@ namespace chat.Repository
             return context.Users.FirstOrDefault(r => r.Name == name && r.Password == pass);
         }
 
+        public User CheckUser(string name, string email)
+        {
+            return context.Users.FirstOrDefault(r => r.Name == name && r.Email == email);
+        }
+
         public string SetUserOffline(string connectionId)
         {
             var user = context.Users.FirstOrDefault(r => r.ConnectionId == connectionId);
